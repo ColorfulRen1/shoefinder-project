@@ -84,10 +84,10 @@
                 <div class="question">
                     <h3>What's your foot width?</h3>
                     <div class="options" id="widthOptions">
-                        <div class="option" onclick="selectWidth('narrow', this)">Narrow (A-B width)</div>
-                        <div class="option" onclick="selectWidth('medium', this)">Medium (C-D width)</div>
-                        <div class="option" onclick="selectWidth('wide', this)">Wide (E-EE width)</div>
-                        <div class="option" onclick="selectWidth('extra-wide', this)">Extra Wide (EEE+ width)</div>
+                        <div class="option" onclick="selectWidth('narrow', this)">Narrow</div>
+                        <div class="option" onclick="selectWidth('medium', this)">Medium</div>
+                        <div class="option" onclick="selectWidth('wide', this)">Wide</div>
+                        <div class="option" onclick="selectWidth('extra-wide', this)">Extra Wide</div>
                     </div>
                 </div>
                 <div class="btn-container">
@@ -117,7 +117,7 @@
 </div>
 
 <script>
-let shoes = []; // loaded from JSON
+let shoes = [];
 let userPreferences = { purpose: null, width: null };
 let currentFilter = 'all';
 
@@ -131,20 +131,17 @@ async function loadShoes() {
         console.error("Failed to load shoes:", err);
     }
 }
-
 function goToLogin() {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById('loginScreen').classList.add('active');
     document.querySelector('.logout-btn').classList.remove('show');
     userPreferences = { purpose: null, width: null };
 }
-
 function goToQuestionnaire() {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById('questionnaireScreen').classList.add('active');
     document.querySelector('.logout-btn').classList.add('show');
 }
-
 function goToCatalog() {
     if (userPreferences.purpose && userPreferences.width) {
         document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -153,37 +150,32 @@ function goToCatalog() {
         displayShoes();
     }
 }
-
 function selectPurpose(purpose, element) {
     document.querySelectorAll('#purposeOptions .option').forEach(opt => opt.classList.remove('selected'));
     element.classList.add('selected');
     userPreferences.purpose = purpose;
     checkCanSubmit();
 }
-
 function selectWidth(width, element) {
     document.querySelectorAll('#widthOptions .option').forEach(opt => opt.classList.remove('selected'));
     element.classList.add('selected');
     userPreferences.width = width;
     checkCanSubmit();
 }
-
 function checkCanSubmit() {
     document.getElementById('submitBtn').disabled = !(userPreferences.purpose && userPreferences.width);
 }
-
 function displayRecommendations() {
     const widthText = { 'narrow': 'narrow feet', 'medium': 'medium-width feet', 'wide': 'wide feet', 'extra-wide': 'extra-wide feet' };
     const purposeText = { 'running': 'running and athletics', 'casual': 'casual everyday wear', 'formal': 'formal occasions', 'hiking': 'hiking and outdoor activities', 'sports': 'sports and training' };
     document.getElementById('recommendationText').innerHTML =
         `Based on your preferences for <strong>${purposeText[userPreferences.purpose]}</strong> with <strong>${widthText[userPreferences.width]}</strong>, we've curated the best options for you.`;
 }
-
 function displayShoes() {
     const grid = document.getElementById('shoesGrid');
     grid.innerHTML = '';
 
-    if (!shoes.length) return; // if JSON not loaded yet
+    if (!shoes.length) return; // DON'T DELETE! this for if JSON not loaded yet
 
     let filteredShoes = shoes.filter(shoe => currentFilter === 'all' || shoe.width === currentFilter);
 
@@ -201,10 +193,10 @@ function displayShoes() {
         card.innerHTML = `
             <div class="shoe-image">
                 <a href="${shoe.link}" target="_blank">
-                    <img src="${shoe.image}" alt="${shoe.name}" onerror="this.src='fallback.jpg'">
+                    <img src="${shoe.image}" alt="${shoe.name}" onerror="this.src=''">
                 </a>
             </div>
-            <div class="shoe-width">${shoe.width.charAt(0).toUpperCase() + shoe.width.slice(1)} Width</div>
+            <div class="shoe-width">${shoe.width.charAt(0).toUpperCase() + shoe.width.substring(1)} Width</div>
             <div class="shoe-name">${shoe.name} ${isRecommended?'⭐':''}</div>
             <div class="shoe-purpose">Perfect for ${shoe.category}</div>
             <div class="shoe-price">$${shoe.price}</div>
