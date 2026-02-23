@@ -8,6 +8,39 @@
     "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/b7d9211c-26e7-431a-ac24-b0540fb3c00f/AIR+FORCE+1+%2707.png"
   }
   {
+    "name": "Nike Court Vision Low",
+    "category": "casual",
+    "width": "medium",
+    "price": 85,
+    "link": "https://www.nike.com/t/court-vision-low-mens-shoes-FpEqIQ3A/HV2530-100",
+    "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/30196c19-7f0f-4566-bb63-94e3a3051b61/NIKE+COURT+VISION+LO.png"
+  }
+  {
+    "name": "Nike Killshot 2 Leather",
+    "category": "casual",
+    "width": "narrow",
+    "price": 100,
+    "link": "https://www.nike.com/t/killshot-2-leather-mens-shoes-72M7D1/IQ9402-133",
+    "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/7a7d9dd5-851e-4401-a924-a287be7c6ab9/KILLSHOT+2+LEATHER.png"
+  }
+  {
+    "name": "Nike Air Max 90",
+    "category": "casual",
+    "width": "medium",
+    "price": 135,
+    "link": "https://www.nike.com/t/air-max-90-mens-shoes-bAZ6AeHT/DM0029-600",
+    "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/0cb8b8c5-aa97-4d3e-accc-82cbe810ec10/AIR+MAX+90.png"
+  }
+  {
+    "name": "Nike Revolution 8",
+    "category": "casual",
+    "width": "medium",
+    "price": 75,
+    "link": "https://www.nike.com/t/revolution-8-mens-road-running-shoes-U0b8oy8S/HJ9198-006",
+    "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/11a579e0-aec8-4398-88b0-a85808bd221d/NIKE+REVOLUTION+8.png"
+  }
+
+  {
     "name": "Nike Pegasus 41",
     "category": "running",
     "width": "medium",
