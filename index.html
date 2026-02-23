@@ -169,7 +169,7 @@ function displayRecommendations() {
     const widthText = { 'narrow': 'narrow feet', 'medium': 'medium-width feet', 'wide': 'wide feet', 'extra-wide': 'extra-wide feet' };
     const purposeText = { 'running': 'running and athletics', 'casual': 'casual everyday wear', 'formal': 'formal occasions', 'hiking': 'hiking and outdoor activities', 'sports': 'sports and training' };
     document.getElementById('recommendationText').innerHTML =
-        `Based on your preferences for <strong>${purposeText[userPreferences.purpose]}</strong> with <strong>${widthText[userPreferences.width]}</strong>, we've curated the best options for you.`;
+        `Based on your preferences for <strong>${purposeText[userPreferences.purpose]}</strong> with <strong>${widthText[userPreferences.width]}</strong>, we've selected the best options for you.`;
 }
 function displayShoes() {
     const grid = document.getElementById('shoesGrid');
