@@ -1,506 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solemate - Finding Perfect Shoes for Your Feet</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #FFFFFF 0%, #FFFDF2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .container {
-            background: #FFFDF2;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            max-width: 1200px;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #000000 0%, #000000 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-
-        .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-
-        .header p {
-            opacity: 0.9;
-            font-size: 1.1em;
-        }
-
-        .content {
-            padding: 40px;
-        }
-
-        .screen {
-            display: none;
-        }
-
-        .screen.active {
-            display: block;
-        }
-
-        /* Login Form */
-        .login-form {
-            max-width: 400px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .login-form h2 {
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .login-form p {
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        .btn {
-            padding: 14px 40px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        /* Questionnaire */
-        .questionnaire {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .questionnaire h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            color: #333;
-        }
-
-        .question {
-            margin-bottom: 30px;
-        }
-
-        .question h3 {
-            color: #333;
-            margin-bottom: 15px;
-            font-size: 1.3em;
-        }
-
-        .options {
-            display: grid;
-            gap: 12px;
-        }
-
-        .option {
-            padding: 15px 20px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s;
-            background: white;
-        }
-
-        .option:hover {
-            border-color: #667eea;
-            background: #f8f9ff;
-        }
-
-        .option.selected {
-            border-color: #667eea;
-            background: #667eea;
-            color: white;
-        }
-
-        .btn-container {
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        /* Shoe Catalog */
-        .shoes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        .shoe-card {
-            border: 2px solid #e0e0e0;
-            border-radius: 15px;
-            padding: 20px;
-            transition: all 0.3s;
-            background: white;
-        }
-
-        .shoe-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            border-color: #667eea;
-        }
-
-        .shoe-image {
-            width: 100%;
-            height: 200px;
-            background: #f5f5f5;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4em;
-            margin-bottom: 15px;
-        }
-
-        .shoe-name {
-            font-size: 1.2em;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 8px;
-        }
-
-        .shoe-width {
-            display: inline-block;
-            padding: 4px 12px;
-            background: #667eea;
-            color: white;
-            border-radius: 20px;
-            font-size: 0.85em;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .shoe-purpose {
-            color: #666;
-            font-size: 0.9em;
-            margin-bottom: 10px;
-        }
-
-        .shoe-price {
-            font-size: 1.3em;
-            font-weight: 700;
-            color: #764ba2;
-        }
-
-        .filter-section {
-            margin-bottom: 30px;
-            padding: 20px;
-            background: #f8f9ff;
-            border-radius: 10px;
-        }
-
-        .filter-section h3 {
-            margin-bottom: 15px;
-            color: #333;
-        }
-
-        .recommendations {
-            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-        }
-
-        .recommendations h2 {
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .recommendations p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        .logout-btn {
-            background: transparent;
-            border: 2px solid white;
-            color: white;
-            padding: 8px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            margin-top: 10px;
-            display: none;
-        }
-
-        .logout-btn.show {
-            display: inline-block;
-        }
-
-        .logout-btn:hover {
-            background: white;
-            color: #667eea;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solemate - Finding Perfect Shoes for Your Feet</title>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        background: linear-gradient(135deg, #FFFFFF 0%, #FFFDF2 100%);
+        min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px;
+    }
+    .container { background: #FFFDF2; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); max-width: 1200px; width: 100%; overflow: hidden; }
+    .header { background: #000; color: white; padding: 30px; text-align: center; }
+    .header h1 { font-size: 2.5em; margin-bottom: 10px; }
+    .header p { opacity: 0.9; font-size: 1.1em; }
+    .content { padding: 40px; }
+    .screen { display: none; }
+    .screen.active { display: block; }
+    .login-form, .questionnaire { max-width: 600px; margin: 0 auto; text-align: center; }
+    .login-form h2, .questionnaire h2 { color: #333; margin-bottom: 20px; }
+    .login-form p, .questionnaire p { color: #666; margin-bottom: 30px; }
+    .btn { padding: 14px 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: transform 0.2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .question { margin-bottom: 30px; }
+    .question h3 { color: #333; margin-bottom: 15px; font-size: 1.3em; }
+    .options { display: grid; gap: 12px; }
+    .option { padding: 15px 20px; border: 2px solid #e0e0e0; border-radius: 10px; cursor: pointer; transition: all 0.3s; background: white; }
+    .option:hover { border-color: #667eea; background: #f8f9ff; }
+    .option.selected { border-color: #667eea; background: #667eea; color: white; }
+    .btn-container { text-align: center; margin-top: 30px; }
+    .shoes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
+    .shoe-card { border: 2px solid #e0e0e0; border-radius: 15px; padding: 20px; transition: all 0.3s; background: white; }
+    .shoe-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.15); border-color: #667eea; }
+    .shoe-image { width: 100%; height: 200px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; overflow: hidden; }
+    .shoe-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
+    .shoe-name { font-size: 1.2em; font-weight: 600; color: #333; margin-bottom: 8px; }
+    .shoe-width { display: inline-block; padding: 4px 12px; background: #667eea; color: white; border-radius: 20px; font-size: 0.85em; font-weight: 600; margin-bottom: 10px; }
+    .shoe-purpose { color: #666; font-size: 0.9em; margin-bottom: 10px; }
+    .shoe-price { font-size: 1.3em; font-weight: 700; color: #764ba2; }
+    .filter-section { margin-bottom: 30px; padding: 20px; background: #f8f9ff; border-radius: 10px; }
+    .filter-section h3 { margin-bottom: 15px; color: #333; }
+    .recommendations { background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%); padding: 20px; border-radius: 10px; margin-bottom: 30px; }
+    .recommendations h2 { color: #333; margin-bottom: 10px; }
+    .recommendations p { color: #666; line-height: 1.6; }
+    .logout-btn { background: transparent; border: 2px solid white; color: white; padding: 8px 20px; border-radius: 6px; cursor: pointer; font-weight: 600; margin-top: 10px; display: none; }
+    .logout-btn.show { display: inline-block; }
+    .logout-btn:hover { background: white; color: #667eea; }
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>👟 Solemate</h1>
-            <p>Find the perfect shoes for your feet</p>
-            <button class="logout-btn" onclick="goToLogin()">Logout</button>
-        </div>
-
-        <div class="content">
-            <!-- Login Screen -->
-            <div id="loginScreen" class="screen active">
-                <div class="login-form">
-                    <h2>Welcome to Solemate</h2>
-                    <p>Let's find your perfect shoes</p>
-                    <button class="btn" onclick="goToQuestionnaire()">Get Started</button>
-                </div>
-            </div>
-
-            <!-- Questionnaire Screen -->
-            <div id="questionnaireScreen" class="screen">
-                <div class="questionnaire">
-                    <h2>Let's Find Your Perfect Fit</h2>
-                    
-                    <div class="question">
-                        <h3>What will you use these shoes for?</h3>
-                        <div class="options" id="purposeOptions">
-                            <div class="option" onclick="selectPurpose('running', this)">Running</div>
-                            <div class="option" onclick="selectPurpose('casual', this)">Casual Everyday Wear</div>
-                            <div class="option" onclick="selectPurpose('hiking', this)">Hiking & Outdoor</div>
-                            <div class="option" onclick="selectPurpose('sports', this)">Cleats/Athletics</div>
-                        </div>
-                    </div>
-
-                    <div class="question">
-                        <h3>What's your foot width?</h3>
-                        <div class="options" id="widthOptions">
-                            <div class="option" onclick="selectWidth('narrow', this)">Narrow (A-B width)</div>
-                            <div class="option" onclick="selectWidth('medium', this)">Medium (C-D width)</div>
-                            <div class="option" onclick="selectWidth('wide', this)">Wide (E-EE width)</div>
-                            <div class="option" onclick="selectWidth('extra-wide', this)">Extra Wide (EEE+ width)</div>
-                        </div>
-                    </div>
-
-                    <div class="btn-container">
-                        <button class="btn" id="submitBtn" onclick="goToCatalog()" disabled>Show My Recommendations</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Shoe Catalog Screen -->
-            <div id="catalogScreen" class="screen">
-                <div class="recommendations" id="recommendationBox">
-                    <h2>Your Perfect Matches</h2>
-                    <p id="recommendationText"></p>
-                </div>
-
-                <div class="filter-section">
-                    <h3>Filter by Width</h3>
-                    <div class="options" id="widthFilter">
-                        <div class="option selected" onclick="filterByWidth('all', this)">All Widths</div>
-                        <div class="option" onclick="filterByWidth('narrow', this)">Narrow</div>
-                        <div class="option" onclick="filterByWidth('medium', this)">Medium</div>
-                        <div class="option" onclick="filterByWidth('wide', this)">Wide</div>
-                        <div class="option" onclick="filterByWidth('extra-wide', this)">Extra Wide</div>
-                    </div>
-                </div>
-
-                <div class="shoes-grid" id="shoesGrid"></div>
-            </div>
-        </div>
+<div class="container">
+    <div class="header">
+        <h1>👟 Solemate</h1>
+        <p>Find the perfect shoes for your feet</p>
+        <button class="logout-btn" onclick="goToLogin()">Logout</button>
     </div>
 
-    <script>
-        // Shoe Database organized by width
-        const shoes = [
-            // Narrow Width
-            { name: "Nike Terra Kiger 10", width: "narrow", purpose: "running", price: 140, gender: "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/eca3fcaf-0ca7-42fd-8db5-d1416b18ef27/NIKE+TERRA+KIGER+10.png" },
-            { name: "Sleek Professional", width: "narrow", purpose: "formal", price: 149.99, gender: "👞" },
-            { name: "Urban Walker Slim", width: "narrow", purpose: "casual", price: 89.99, gender: "👟" },
-            { name: "Trail Slim Pro", width: "narrow", purpose: "hiking", price: 139.99, gender: "🥾" },
-            { name: "Court Precision", width: "narrow", purpose: "sports", price: 119.99, gender: "👟" },
-            
-            // Medium Width
-            { name: "CloudRun Standard", width: "medium", purpose: "running", price: 135.99, gender: "👟" },
-            { name: "Classic Oxford", width: "medium", purpose: "formal", price: 159.99, gender: "👞" },
-            { name: "Everyday Comfort", width: "medium", purpose: "casual", price: 94.99, gender: "👟" },
-            { name: "Mountain Explorer", width: "medium", purpose: "hiking", price: 144.99, gender: "🥾" },
-            { name: "All-Sport Pro", width: "medium", purpose: "sports", price: 124.99, gender: "👟" },
-            { name: "Metro Sneaker", width: "medium", purpose: "casual", price: 79.99, gender: "👟" },
-            { name: "Sprint Master", width: "medium", purpose: "running", price: 139.99, gender: "👟" },
-            
-            // Wide Width
-            { name: "SpaceGlide Wide", width: "wide", purpose: "running", price: 139.99, gender: "👟" },
-            { name: "Comfort Executive", width: "wide", purpose: "formal", price: 169.99, gender: "👞" },
-            { name: "Relaxed Fit Daily", width: "wide", purpose: "casual", price: 99.99, gender: "👟" },
-            { name: "Wide Trail Master", width: "wide", purpose: "hiking", price: 154.99, gender: "🥾" },
-            { name: "PowerPlay Wide", width: "wide", purpose: "sports", price: 129.99, gender: "👟" },
-            { name: "Comfort Walk Wide", width: "wide", purpose: "casual", price: 89.99, gender: "👟" },
-            
-            // Extra Wide Width
-            { name: "MaxRoom Runner", width: "extra-wide", purpose: "running", price: 144.99, gender: "👟" },
-            { name: "Executive XW", width: "extra-wide", purpose: "formal", price: 179.99, gender: "👞" },
-            { name: "Ultra Comfort Casual", width: "extra-wide", purpose: "casual", price: 104.99, gender: "👟" },
-            { name: "Expedition XW", width: "extra-wide", purpose: "hiking", price: 164.99, gender: "🥾" },
-            { name: "MaxWidth Athlete", width: "extra-wide", purpose: "sports", price: 134.99, gender: "👟" },
-            { name: "Freedom Fit", width: "extra-wide", purpose: "casual", price: 94.99, gender: "👟" }
-        ];
+    <div class="content">
+        <!-- Login Screen -->
+        <div id="loginScreen" class="screen active">
+            <div class="login-form">
+                <h2>Welcome to Solemate</h2>
+                <p>Let's find your perfect shoes</p>
+                <button class="btn" onclick="goToQuestionnaire()">Get Started</button>
+            </div>
+        </div>
 
-        let userPreferences = {
-            purpose: null,
-            width: null
-        };
+        <!-- Questionnaire Screen -->
+        <div id="questionnaireScreen" class="screen">
+            <div class="questionnaire">
+                <h2>Let's Find Your Perfect Fit</h2>
+                <div class="question">
+                    <h3>What will you use these shoes for?</h3>
+                    <div class="options" id="purposeOptions">
+                        <div class="option" onclick="selectPurpose('running', this)">Running</div>
+                        <div class="option" onclick="selectPurpose('casual', this)">Casual Everyday Wear</div>
+                        <div class="option" onclick="selectPurpose('hiking', this)">Hiking & Outdoor</div>
+                        <div class="option" onclick="selectPurpose('sports', this)">Cleats/Athletics</div>
+                    </div>
+                </div>
+                <div class="question">
+                    <h3>What's your foot width?</h3>
+                    <div class="options" id="widthOptions">
+                        <div class="option" onclick="selectWidth('narrow', this)">Narrow (A-B width)</div>
+                        <div class="option" onclick="selectWidth('medium', this)">Medium (C-D width)</div>
+                        <div class="option" onclick="selectWidth('wide', this)">Wide (E-EE width)</div>
+                        <div class="option" onclick="selectWidth('extra-wide', this)">Extra Wide (EEE+ width)</div>
+                    </div>
+                </div>
+                <div class="btn-container">
+                    <button class="btn" id="submitBtn" onclick="goToCatalog()" disabled>Show My Recommendations</button>
+                </div>
+            </div>
+        </div>
 
-        let currentFilter = 'all';
+        <!-- Shoe Catalog Screen -->
+        <div id="catalogScreen" class="screen">
+            <div class="recommendations" id="recommendationBox">
+                <h2>Your Perfect Matches</h2>
+                <p id="recommendationText"></p>
+            </div>
+            <div class="filter-section">
+                <h3>Filter by Width</h3>
+                <div class="options" id="widthFilter">
+                    <div class="option selected" onclick="filterByWidth('all', this)">All Widths</div>
+                    <div class="option" onclick="filterByWidth('narrow', this)">Narrow</div>
+                    <div class="option" onclick="filterByWidth('medium', this)">Medium</div>
+                    <div class="option" onclick="filterByWidth('wide', this)">Wide</div>
+                    <div class="option" onclick="filterByWidth('extra-wide', this)">Extra Wide</div>
+                </div>
+            </div>
+            <div class="shoes-grid" id="shoesGrid"></div>
+        </div>
+    </div>
+</div>
 
-        function goToLogin() {
-            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-            document.getElementById('loginScreen').classList.add('active');
-            document.querySelector('.logout-btn').classList.remove('show');
-            userPreferences = { purpose: null, width: null };
-        }
+<script>
+let shoes = []; // loaded from JSON
+let userPreferences = { purpose: null, width: null };
+let currentFilter = 'all';
 
-        function goToQuestionnaire() {
-            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-            document.getElementById('questionnaireScreen').classList.add('active');
-            document.querySelector('.logout-btn').classList.add('show');
-        }
+document.addEventListener('DOMContentLoaded', loadShoes);
 
-        function goToCatalog() {
-            if (userPreferences.purpose && userPreferences.width) {
-                document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-                document.getElementById('catalogScreen').classList.add('active');
-                displayRecommendations();
-                displayShoes();
-            }
-        }
+async function loadShoes() {
+    try {
+        const response = await fetch('nike-shoes.json');
+        shoes = await response.json();
+    } catch (err) {
+        console.error("Failed to load shoes:", err);
+    }
+}
 
-        function selectPurpose(purpose, element) {
-            document.querySelectorAll('#purposeOptions .option').forEach(opt => opt.classList.remove('selected'));
-            element.classList.add('selected');
-            userPreferences.purpose = purpose;
-            checkCanSubmit();
-        }
+function goToLogin() {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('loginScreen').classList.add('active');
+    document.querySelector('.logout-btn').classList.remove('show');
+    userPreferences = { purpose: null, width: null };
+}
 
-        function selectWidth(width, element) {
-            document.querySelectorAll('#widthOptions .option').forEach(opt => opt.classList.remove('selected'));
-            element.classList.add('selected');
-            userPreferences.width = width;
-            checkCanSubmit();
-        }
+function goToQuestionnaire() {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('questionnaireScreen').classList.add('active');
+    document.querySelector('.logout-btn').classList.add('show');
+}
 
-        function checkCanSubmit() {
-            const btn = document.getElementById('submitBtn');
-            if (userPreferences.purpose && userPreferences.width) {
-                btn.disabled = false;
-            } else {
-                btn.disabled = true;
-            }
-        }
+function goToCatalog() {
+    if (userPreferences.purpose && userPreferences.width) {
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        document.getElementById('catalogScreen').classList.add('active');
+        displayRecommendations();
+        displayShoes();
+    }
+}
 
-        function displayRecommendations() {
-            const widthText = {
-                'narrow': 'narrow feet',
-                'medium': 'medium-width feet',
-                'wide': 'wide feet',
-                'extra-wide': 'extra-wide feet'
-            };
+function selectPurpose(purpose, element) {
+    document.querySelectorAll('#purposeOptions .option').forEach(opt => opt.classList.remove('selected'));
+    element.classList.add('selected');
+    userPreferences.purpose = purpose;
+    checkCanSubmit();
+}
 
-            const purposeText = {
-                'running': 'running and athletics',
-                'casual': 'casual everyday wear',
-                'formal': 'formal and business occasions',
-                'hiking': 'hiking and outdoor activities',
-                'sports': 'sports and training'
-            };
+function selectWidth(width, element) {
+    document.querySelectorAll('#widthOptions .option').forEach(opt => opt.classList.remove('selected'));
+    element.classList.add('selected');
+    userPreferences.width = width;
+    checkCanSubmit();
+}
 
-            document.getElementById('recommendationText').innerHTML = 
-                `Based on your preferences for <strong>${purposeText[userPreferences.purpose]}</strong> with <strong>${widthText[userPreferences.width]}</strong>, we've curated the best options for you. All shoes are organized by width to help you find your perfect fit!`;
-        }
+function checkCanSubmit() {
+    document.getElementById('submitBtn').disabled = !(userPreferences.purpose && userPreferences.width);
+}
 
-        function displayShoes() {
-            const grid = document.getElementById('shoesGrid');
-            grid.innerHTML = '';
+function displayRecommendations() {
+    const widthText = { 'narrow': 'narrow feet', 'medium': 'medium-width feet', 'wide': 'wide feet', 'extra-wide': 'extra-wide feet' };
+    const purposeText = { 'running': 'running and athletics', 'casual': 'casual everyday wear', 'formal': 'formal occasions', 'hiking': 'hiking and outdoor activities', 'sports': 'sports and training' };
+    document.getElementById('recommendationText').innerHTML =
+        `Based on your preferences for <strong>${purposeText[userPreferences.purpose]}</strong> with <strong>${widthText[userPreferences.width]}</strong>, we've curated the best options for you.`;
+}
 
-            // Filter shoes
-            let filteredShoes = shoes.filter(shoe => {
-                const widthMatch = currentFilter === 'all' || shoe.width === currentFilter;
-                return widthMatch;
-            });
+function displayShoes() {
+    const grid = document.getElementById('shoesGrid');
+    grid.innerHTML = '';
 
-            // Sort by width (narrow to extra-wide)
-            const widthOrder = ['narrow', 'medium', 'wide', 'extra-wide'];
-            filteredShoes.sort((a, b) => widthOrder.indexOf(a.width) - widthOrder.indexOf(b.width));
+    if (!shoes.length) return; // if JSON not loaded yet
 
-            // Highlight recommended shoes
-            const recommendedShoes = filteredShoes.filter(shoe => 
-                shoe.purpose === userPreferences.purpose && shoe.width === userPreferences.width
-            );
+    let filteredShoes = shoes.filter(shoe => currentFilter === 'all' || shoe.width === currentFilter);
 
-            const otherShoes = filteredShoes.filter(shoe => 
-                !(shoe.purpose === userPreferences.purpose && shoe.width === userPreferences.width)
-            );
+    const widthOrder = ['narrow','medium','wide','extra-wide'];
+    filteredShoes.sort((a,b) => widthOrder.indexOf(a.width)-widthOrder.indexOf(b.width));
 
-            // Display recommended shoes first
-            [...recommendedShoes, ...otherShoes].forEach(shoe => {
-                const card = document.createElement('div');
-                card.className = 'shoe-card';
-                
-                const widthLabels = {
-                    'narrow': 'Narrow Width',
-                    'medium': 'Medium Width',
-                    'wide': 'Wide Width',
-                    'extra-wide': 'Extra Wide'
-                };
+    const recommended = filteredShoes.filter(s => s.category === userPreferences.purpose && s.width === userPreferences.width);
+    const others = filteredShoes.filter(s => !(s.category === userPreferences.purpose && s.width === userPreferences.width));
 
-                const isRecommended = shoe.purpose === userPreferences.purpose && shoe.width === userPreferences.width;
-                
-                card.innerHTML = `
-                    <div class="shoe-image">${shoe.gender}</div>
-                    <div class="shoe-width">${widthLabels[shoe.width]}</div>
-                    <div class="shoe-name">${shoe.name} ${isRecommended ? '⭐' : ''}</div>
-                    <div class="shoe-purpose">Perfect for ${shoe.purpose}</div>
-                    <div class="shoe-price">$${shoe.price}</div>
-                `;
-                
-                grid.appendChild(card);
-            });
-        }
+    [...recommended, ...others].forEach(shoe => {
+        const card = document.createElement('div');
+        card.className = 'shoe-card';
+        const isRecommended = shoe.category === userPreferences.purpose && shoe.width === userPreferences.width;
 
-        function filterByWidth(width, element) {
-            document.querySelectorAll('#widthFilter .option').forEach(opt => opt.classList.remove('selected'));
-            element.classList.add('selected');
-            currentFilter = width;
-            displayShoes();
-        }
-    </script>
+        card.innerHTML = `
+            <div class="shoe-image">
+                <a href="${shoe.link}" target="_blank">
+                    <img src="${shoe.image}" alt="${shoe.name}" onerror="this.src='fallback.jpg'">
+                </a>
+            </div>
+            <div class="shoe-width">${shoe.width.charAt(0).toUpperCase() + shoe.width.slice(1)} Width</div>
+            <div class="shoe-name">${shoe.name} ${isRecommended?'⭐':''}</div>
+            <div class="shoe-purpose">Perfect for ${shoe.category}</div>
+            <div class="shoe-price">$${shoe.price}</div>
+        `;
+        grid.appendChild(card);
+    });
+}
+
+function filterByWidth(width, element) {
+    document.querySelectorAll('#widthFilter .option').forEach(opt => opt.classList.remove('selected'));
+    element.classList.add('selected');
+    currentFilter = width;
+    displayShoes();
+}
+</script>
 </body>
 </html>
-
-
