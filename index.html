@@ -290,11 +290,10 @@
                     <div class="question">
                         <h3>What will you use these shoes for?</h3>
                         <div class="options" id="purposeOptions">
-                            <div class="option" onclick="selectPurpose('running', this)">🏃 Running & Athletics</div>
-                            <div class="option" onclick="selectPurpose('casual', this)">👟 Casual Everyday Wear</div>
-                            <div class="option" onclick="selectPurpose('formal', this)">👔 Formal & Business</div>
-                            <div class="option" onclick="selectPurpose('hiking', this)">🥾 Hiking & Outdoor</div>
-                            <div class="option" onclick="selectPurpose('sports', this)">⚽ Sports & Training</div>
+                            <div class="option" onclick="selectPurpose('running', this)">Running</div>
+                            <div class="option" onclick="selectPurpose('casual', this)">Casual Everyday Wear</div>
+                            <div class="option" onclick="selectPurpose('hiking', this)">Hiking & Outdoor</div>
+                            <div class="option" onclick="selectPurpose('sports', this)">Cleats/Athletics</div>
                         </div>
                     </div>
 
@@ -341,36 +340,36 @@
         // Shoe Database organized by width
         const shoes = [
             // Narrow Width
-            { name: "AeroGlide Narrow", width: "narrow", purpose: "running", price: 129.99, emoji: "👟" },
-            { name: "Sleek Professional", width: "narrow", purpose: "formal", price: 149.99, emoji: "👞" },
-            { name: "Urban Walker Slim", width: "narrow", purpose: "casual", price: 89.99, emoji: "👟" },
-            { name: "Trail Slim Pro", width: "narrow", purpose: "hiking", price: 139.99, emoji: "🥾" },
-            { name: "Court Precision", width: "narrow", purpose: "sports", price: 119.99, emoji: "👟" },
+            { name: "Nike Terra Kiger 10", width: "narrow", purpose: "running", price: 140, gender: "Male" },
+            { name: "Sleek Professional", width: "narrow", purpose: "formal", price: 149.99, gender: "👞" },
+            { name: "Urban Walker Slim", width: "narrow", purpose: "casual", price: 89.99, gender: "👟" },
+            { name: "Trail Slim Pro", width: "narrow", purpose: "hiking", price: 139.99, gender: "🥾" },
+            { name: "Court Precision", width: "narrow", purpose: "sports", price: 119.99, gender: "👟" },
             
             // Medium Width
-            { name: "CloudRun Standard", width: "medium", purpose: "running", price: 135.99, emoji: "👟" },
-            { name: "Classic Oxford", width: "medium", purpose: "formal", price: 159.99, emoji: "👞" },
-            { name: "Everyday Comfort", width: "medium", purpose: "casual", price: 94.99, emoji: "👟" },
-            { name: "Mountain Explorer", width: "medium", purpose: "hiking", price: 144.99, emoji: "🥾" },
-            { name: "All-Sport Pro", width: "medium", purpose: "sports", price: 124.99, emoji: "👟" },
-            { name: "Metro Sneaker", width: "medium", purpose: "casual", price: 79.99, emoji: "👟" },
-            { name: "Sprint Master", width: "medium", purpose: "running", price: 139.99, emoji: "👟" },
+            { name: "CloudRun Standard", width: "medium", purpose: "running", price: 135.99, gender: "👟" },
+            { name: "Classic Oxford", width: "medium", purpose: "formal", price: 159.99, gender: "👞" },
+            { name: "Everyday Comfort", width: "medium", purpose: "casual", price: 94.99, gender: "👟" },
+            { name: "Mountain Explorer", width: "medium", purpose: "hiking", price: 144.99, gender: "🥾" },
+            { name: "All-Sport Pro", width: "medium", purpose: "sports", price: 124.99, gender: "👟" },
+            { name: "Metro Sneaker", width: "medium", purpose: "casual", price: 79.99, gender: "👟" },
+            { name: "Sprint Master", width: "medium", purpose: "running", price: 139.99, gender: "👟" },
             
             // Wide Width
-            { name: "SpaceGlide Wide", width: "wide", purpose: "running", price: 139.99, emoji: "👟" },
-            { name: "Comfort Executive", width: "wide", purpose: "formal", price: 169.99, emoji: "👞" },
-            { name: "Relaxed Fit Daily", width: "wide", purpose: "casual", price: 99.99, emoji: "👟" },
-            { name: "Wide Trail Master", width: "wide", purpose: "hiking", price: 154.99, emoji: "🥾" },
-            { name: "PowerPlay Wide", width: "wide", purpose: "sports", price: 129.99, emoji: "👟" },
-            { name: "Comfort Walk Wide", width: "wide", purpose: "casual", price: 89.99, emoji: "👟" },
+            { name: "SpaceGlide Wide", width: "wide", purpose: "running", price: 139.99, gender: "👟" },
+            { name: "Comfort Executive", width: "wide", purpose: "formal", price: 169.99, gender: "👞" },
+            { name: "Relaxed Fit Daily", width: "wide", purpose: "casual", price: 99.99, gender: "👟" },
+            { name: "Wide Trail Master", width: "wide", purpose: "hiking", price: 154.99, gender: "🥾" },
+            { name: "PowerPlay Wide", width: "wide", purpose: "sports", price: 129.99, gender: "👟" },
+            { name: "Comfort Walk Wide", width: "wide", purpose: "casual", price: 89.99, gender: "👟" },
             
             // Extra Wide Width
-            { name: "MaxRoom Runner", width: "extra-wide", purpose: "running", price: 144.99, emoji: "👟" },
-            { name: "Executive XW", width: "extra-wide", purpose: "formal", price: 179.99, emoji: "👞" },
-            { name: "Ultra Comfort Casual", width: "extra-wide", purpose: "casual", price: 104.99, emoji: "👟" },
-            { name: "Expedition XW", width: "extra-wide", purpose: "hiking", price: 164.99, emoji: "🥾" },
-            { name: "MaxWidth Athlete", width: "extra-wide", purpose: "sports", price: 134.99, emoji: "👟" },
-            { name: "Freedom Fit", width: "extra-wide", purpose: "casual", price: 94.99, emoji: "👟" }
+            { name: "MaxRoom Runner", width: "extra-wide", purpose: "running", price: 144.99, gender: "👟" },
+            { name: "Executive XW", width: "extra-wide", purpose: "formal", price: 179.99, gender: "👞" },
+            { name: "Ultra Comfort Casual", width: "extra-wide", purpose: "casual", price: 104.99, gender: "👟" },
+            { name: "Expedition XW", width: "extra-wide", purpose: "hiking", price: 164.99, gender: "🥾" },
+            { name: "MaxWidth Athlete", width: "extra-wide", purpose: "sports", price: 134.99, gender: "👟" },
+            { name: "Freedom Fit", width: "extra-wide", purpose: "casual", price: 94.99, gender: "👟" }
         ];
 
         let userPreferences = {
@@ -483,7 +482,7 @@
                 const isRecommended = shoe.purpose === userPreferences.purpose && shoe.width === userPreferences.width;
                 
                 card.innerHTML = `
-                    <div class="shoe-image">${shoe.emoji}</div>
+                    <div class="shoe-image">${shoe.gender}</div>
                     <div class="shoe-width">${widthLabels[shoe.width]}</div>
                     <div class="shoe-name">${shoe.name} ${isRecommended ? '⭐' : ''}</div>
                     <div class="shoe-purpose">Perfect for ${shoe.purpose}</div>
