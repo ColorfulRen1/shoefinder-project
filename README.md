@@ -42,8 +42,8 @@ Simply double-click `index.html` to view it in your preferred browser.
 ## 📂 Project Structure
 
 ```text
-├── index.html          # Main application entry point
-├── style.css           # Modern, responsive styling
+├── index.html          # Main application entry point, also includes JavaScript.
+├── style.css           # More modern styling
 ├── script.js           # Conversion logic and event handling
 └── assets/             # Brand logos and icons
 
