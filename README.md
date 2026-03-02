@@ -44,9 +44,9 @@ License
 - See [LICENSE](LICENSE) for license details.
 
 Credits
-**- Dara — Scrum Leader:** oversaw project progress and coordination.
-**- Jacob — Lead Developer:** implemented site structure and most JavaScript logic.
-**- Arjun — Data & Design Developer:** added data to `nike-shoes.json` and made final design touches.
-**- Hugo — GitHub & Hosting Developer:** structured repository and set up web hosting.
-**- Melvin — QA:** reviewed features to ensure functionality.
-**- Jeffrey — UI/UX:** changed color scheme, updated site title, and proposed general layout (no implementation).
+- **Dara — Scrum Leader:** oversaw project progress and coordination.
+- **Jacob — Lead Developer:** implemented site structure and most JavaScript logic.
+- **Arjun — Data & Design Developer:** added data to `nike-shoes.json` and made final design touches.
+- **Hugo — GitHub & Hosting Developer:** structured repository and set up web hosting.
+- **Melvin — QA:** reviewed features to ensure functionality.
+- **Jeffrey — UI/UX:** changed color scheme, updated site title, and proposed general layout (no implementation).
