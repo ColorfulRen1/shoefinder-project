@@ -124,14 +124,24 @@ body{
 
   <!-- Top Controls: Filter button, Search bar, Questionnaire button -->
   <div class="top-controls">
-    <button class="btn filter-toggle" onclick="toggleFilters()">Filter</button>
+  <button class="btn filter-toggle" onclick="toggleFilters()">Filter</button>
 
-    <input type="text" id="shoeSearch" placeholder="Search shoes..." 
-           oninput="displayShoes()" 
-           style="flex:1; min-width:200px; max-width:400px; height:40px; padding:0 12px; border-radius:6px; border:1px solid #ccc;">
-
-    <button class="btn" onclick="goToQuestionnaire()">Personalize Shoes</button>
+  <div style="position:relative;">
+    <button class="btn" onclick="toggleSort()">Sort by</button>
+    <div id="sortPanel" class="filter-panel" style="position:absolute;top:45px;left:0;display:none;min-width:160px;z-index:10;">
+      <div class="option" onclick="setSort('alpha-asc')">Alphabetical A→Z</div>
+      <div class="option" onclick="setSort('alpha-desc')">Alphabetical Z→A</div>
+      <div class="option" onclick="setSort('price-asc')">Price Low→High</div>
+      <div class="option" onclick="setSort('price-desc')">Price High→Low</div>
+    </div>
   </div>
+
+  <input type="text" id="shoeSearch" placeholder="Search shoes..." 
+         oninput="displayShoes()" 
+         style="flex:1; min-width:200px; max-width:400px; height:40px; padding:0 12px; border-radius:6px; border:1px solid #ccc;">
+
+  <button class="btn" onclick="goToQuestionnaire()">Personalize Shoes</button>
+</div>
 
   <!-- Filter Panel -->
   <div id="filterPanel" class="filter-panel">
@@ -167,10 +177,8 @@ body{
     </label>
   </div>
 
-  <!-- Recommendation Box -->
   <div id="recommendationBox" style="margin-bottom:20px;"></div>
 
-  <!-- Shoes Grid -->
   <div class="shoes-grid" id="shoesGrid"></div>
 
 </div>
@@ -181,11 +189,11 @@ body{
 
 <div class="question">
 <h3>Activity</h3>
-<div class="options" id="qActivity">
-<div class="option" onclick="selectQ('purpose','running',this)">Running</div>
-<div class="option" onclick="selectQ('purpose','casual',this)">Casual</div>
-<div class="option" onclick="selectQ('purpose','hiking',this)">Hiking</div>
-<div class="option" onclick="selectQ('purpose','sports',this)">Sports</div>
+<div class="options" id="qPurpose">
+  <div class="option" onclick="selectQ('purpose','running',this)">Running</div>
+  <div class="option" onclick="selectQ('purpose','casual',this)">Casual</div>
+  <div class="option" onclick="selectQ('purpose','hiking',this)">Hiking</div>
+  <div class="option" onclick="selectQ('purpose','sports',this)">Sports</div>
 </div>
 </div>
 
@@ -221,6 +229,7 @@ let shoes = [];
 let userPref = { purpose:null, width:null, gender:null };
 let filter = { width:'all', activity:'all', gender:'all' };
 let showUserPref = false;
+let currentSort = 'alpha-asc';
 
 document.addEventListener('DOMContentLoaded', loadShoes);
 
@@ -238,7 +247,7 @@ function toggleFilters(){
 
 function setFilter(type, value){
     filter[type] = value;
-    showUserPref = false; // regular filter mode
+    showUserPref = false; // This for unpersonalized shoes
     displayShoes();
 }
 
@@ -248,15 +257,13 @@ function goToQuestionnaire(){
 }
 
 function selectQ(type, value, el){
-    // Capitalize first letter for ID reference
     const capType = type.charAt(0).toUpperCase() + type.slice(1);
     document.querySelectorAll(`#q${capType} .option`).forEach(o => o.classList.remove('selected'));
     el.classList.add('selected');
 
-    // Only one selection at a time is enforced
     userPref[type] = value;
 
-    // Enable submit button only when all are selected
+    // This is to only allow filters if all fields are selected
     document.getElementById('submitQ').disabled = !(userPref.purpose && userPref.width && userPref.gender);
 }
 
@@ -275,13 +282,26 @@ function showRecommendation(){
         `<p>Based on your choices: <strong>${purposeText[userPref.purpose]}</strong> for <strong>${widthText[userPref.width]}</strong> (${userPref.gender}), here are your best options:</p>`;
 }
 
+function toggleSort(){
+    const panel = document.getElementById('sortPanel');
+    panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+}
+
+function setSort(sortType){
+    currentSort = sortType;
+
+    document.querySelectorAll('#sortPanel .option').forEach(o => o.classList.remove('selected'));
+    document.querySelector(`#sortPanel .option[onclick="setSort('${sortType}')"]`).classList.add('selected');
+
+    document.getElementById('sortPanel').style.display = 'none';
+    displayShoes();
+}
 function displayShoes(){
     const grid = document.getElementById('shoesGrid');
     const searchTerm = document.getElementById('shoeSearch').value.toLowerCase();
     grid.innerHTML = '';
 
     let filtered = shoes.filter(s => {
-        // Decide which filter set to use
         const activeFilter = showUserPref ? userPref : filter;
 
         return (
@@ -290,6 +310,13 @@ function displayShoes(){
             (activeFilter.gender === 'all' || s.gender === activeFilter.gender) &&
             s.name.toLowerCase().includes(searchTerm)
         );
+    });
+
+    filtered.sort((a,b) => {
+        if(currentSort === 'alpha-asc') return a.name.localeCompare(b.name);
+        if(currentSort === 'alpha-desc') return b.name.localeCompare(a.name);
+        if(currentSort === 'price-asc') return a.price - b.price;
+        if(currentSort === 'price-desc') return b.price - a.price;
     });
 
     filtered.forEach(s=>{
