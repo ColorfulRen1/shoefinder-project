@@ -1,53 +1,45 @@
-# Shoefinder 👟
+SoleMate
+========
 
-**Shoefinder** is a web-based utility designed to eliminate the guesswork of online shoe shopping. No more "guessing and returning"—just accurate, brand-to-brand size conversions in seconds.
+Project overview
+- **Description:** A small static web app showcasing shoes with a product list and detail page.
+- **Purpose:** Demo UI and data handling for a shoe catalog (search, details, sizing reference).
 
-## 🚀 Features
+Features
+- Browse shoe catalog on the homepage (index.html).
+- View shoe details on shoe-detail.html.
+- Client-side data loaded from nike-shoes.json and sizing helpers in data/sizingData.js.
+- Simple responsive layout in style.css and interactivity in script.js.
 
-* **Brand-to-Brand Conversion:** Instantly translate your Nike size to Adidas, New Balance, and more.
-* **Zero Installation:** Access the tool directly from any browser, mobile or desktop.
-* **Precision Logic:** Uses internal measurement mapping (CM/inches) for higher accuracy than standard charts.
-* **Clean UI:** A minimalist, distraction-free interface built for speed.
+Repository structure
+- [index.html](index.html)  main catalog page
+- [shoe-detail.html](shoe-detail.html)  product detail page
+- [nike-shoes.json](nike-shoes.json)  sample shoe data
+- [assets/](assets/)  images and static assets
+- [LICENSE](LICENSE)  project license
 
-## 🛠️ Tech Stack
+Running locally
+- Quick (open files): open [index.html](index.html) in your browser.
+- Recommended (serve files via HTTP):
 
-* **Frontend:** HTML5, CSS3 (Flexbox/Grid)
-* **Logic:** JavaScript (ES6+)
-* **Version Control:** Git & GitHub
-* **Hosting:** GitHub Pages
+  - Python 3:
+    ```
+    python -m http.server 8000
+    ```
+    then open http://localhost:8000
 
-## 🏃‍♂️ How to Run Locally
+  - Node (http-server):
+    ```
+    npx http-server -c-1
+    ```
 
-Since this is now a standard website, you don't need "Developer Mode" anymore.
+Development notes
+- Data: `nike-shoes.json` is used by `script.js`  modify it to add or change products.
+- Sizing helpers: `data/sizingData.js` contains functions for size conversion/reference.
+- If you add images, place them in `assets/` and update paths in the JSON.
 
-1. **Clone the repository:**
-```bash
-git clone https://github.com/ColorfulRen1/shoefinder-project.git
+Contributing
+- Fork, edit README or code, and open a PR. For quick fixes, submit an issue describing the change.
 
-```
-
-
-2. **Navigate to the folder:**
-```bash
-cd shoefinder-project
-
-```
-
-
-3. **Open the app:**
-Simply double-click `index.html` to view it in your preferred browser.
-
----
-
-## 📂 Project Structure
-
-```text
-├── index.html          # Main application entry point, also includes JavaScript.
-├── style.css           # More modern styling
-├── script.js           # Conversion logic and event handling
-└── assets/             # Brand logos and icons
-
-```
-
-## 🤝 The Team
-* **Dara, Melvin, Jacob, Hugo, Arjun, Jeffrey**
+License
+- See [LICENSE](LICENSE) for license details.
