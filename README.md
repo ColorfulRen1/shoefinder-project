@@ -34,9 +34,8 @@ Running locally
     ```
 
 Development notes
-- Data: `nike-shoes.json` is used by `script.js`  modify it to add or change products.
-- Sizing helpers: `data/sizingData.js` contains functions for size conversion/reference.
-- If you add images, place them in `assets/` and update paths in the JSON.
+- Data: `nike-shoes.json` is used by `index.js`  modify it to add or change products.
+- Review feature and link from 'nike-shoes.json' is located in 'shoe-detail.html'.
 
 Contributing
 - Fork, edit README or code, and open a PR. For quick fixes, submit an issue describing the change.
