@@ -114,7 +114,7 @@ body{
 <div class="container">
 
 <div class="header">
-<h1>Solemate</h1>
+<h1>👟 Solemate</h1>
 <p>Find the perfect shoes for your feet</p>
 </div>
 
@@ -218,16 +218,17 @@ body{
 
 <script>
 let shoes = [];
-let userPref = { purpose:null,width:null,gender:null };
+let userPref = { purpose:null, width:null, gender:null };
 let filter = { width:'all', activity:'all', gender:'all' };
+let showUserPref = false;
 
-document.addEventListener('DOMContentLoaded',loadShoes);
+document.addEventListener('DOMContentLoaded', loadShoes);
 
 async function loadShoes(){
     try{
-    const res = await fetch('nike-shoes.json');
-    shoes = await res.json();
-    displayShoes();
+        const res = await fetch('nike-shoes.json');
+        shoes = await res.json();
+        displayShoes();
     }catch(e){console.error(e);}
 }
 
@@ -237,6 +238,7 @@ function toggleFilters(){
 
 function setFilter(type, value){
     filter[type] = value;
+    showUserPref = false; // regular filter mode
     displayShoes();
 }
 
@@ -245,25 +247,32 @@ function goToQuestionnaire(){
     document.getElementById('questionnaireScreen').classList.add('active');
 }
 
-function selectQ(type,value,el){
-    document.querySelectorAll(`#q${type.charAt(0).toUpperCase()+type.slice(1)} .option`).forEach(o=>o.classList.remove('selected'));
+function selectQ(type, value, el){
+    // Capitalize first letter for ID reference
+    const capType = type.charAt(0).toUpperCase() + type.slice(1);
+    document.querySelectorAll(`#q${capType} .option`).forEach(o => o.classList.remove('selected'));
     el.classList.add('selected');
-    userPref[type]=value;
-    document.getElementById('submitQ').disabled=!(userPref.purpose && userPref.width && userPref.gender);
+
+    // Only one selection at a time is enforced
+    userPref[type] = value;
+
+    // Enable submit button only when all are selected
+    document.getElementById('submitQ').disabled = !(userPref.purpose && userPref.width && userPref.gender);
 }
 
 function submitQuestionnaire(){
     document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
     document.getElementById('catalogScreen').classList.add('active');
+    showUserPref = true; // show only personalized shoes
     showRecommendation();
     displayShoes();
 }
 
 function showRecommendation(){
     const purposeText={running:'running',casual:'casual',hiking:'hiking',sports:'sports'};
-    const widthText={narrow:'narrow',medium:'medium',wide:'wide', 'extra-wide':'extra-wide'};
-    document.getElementById('recommendationBox').innerHTML=
-    `<p>Based on your choices: <strong>${purposeText[userPref.purpose]}</strong> for <strong>${widthText[userPref.width]}</strong> (${userPref.gender}), here are your best options:</p>`;
+    const widthText={narrow:'narrow',medium:'medium',wide:'wide','extra-wide':'extra-wide'};
+    document.getElementById('recommendationBox').innerHTML =
+        `<p>Based on your choices: <strong>${purposeText[userPref.purpose]}</strong> for <strong>${widthText[userPref.width]}</strong> (${userPref.gender}), here are your best options:</p>`;
 }
 
 function displayShoes(){
@@ -271,27 +280,32 @@ function displayShoes(){
     const searchTerm = document.getElementById('shoeSearch').value.toLowerCase();
     grid.innerHTML = '';
 
-    let filtered = shoes.filter(s => 
-        (filter.width === 'all' || s.width === filter.width) &&
-        (filter.activity === 'all' || s.category === filter.activity) &&
-        (filter.gender === 'all' || s.gender === filter.gender) &&
-        (s.name.toLowerCase().includes(searchTerm))
-    );
+    let filtered = shoes.filter(s => {
+        // Decide which filter set to use
+        const activeFilter = showUserPref ? userPref : filter;
+
+        return (
+            (activeFilter.width === 'all' || s.width === activeFilter.width) &&
+            (activeFilter.activity === 'all' || s.category === (activeFilter.purpose || activeFilter.activity)) &&
+            (activeFilter.gender === 'all' || s.gender === activeFilter.gender) &&
+            s.name.toLowerCase().includes(searchTerm)
+        );
+    });
 
     filtered.forEach(s=>{
-    const card = document.createElement('div');
-    card.className = 'shoe-card';
-    card.innerHTML = `
-  <div class="shoe-image">
-    <a href="shoe-detail.html?shoe=${encodeURIComponent(s.name)}" target="_blank">
-      <img src="${s.image}" alt="${s.name}" onerror="this.src=''">
-    </a>
-  </div>
-  <div class="shoe-name">${s.name}</div>
-  <div class="shoe-price">$${s.price}</div>
-`;
-    grid.appendChild(card);
-  });
+        const card = document.createElement('div');
+        card.className = 'shoe-card';
+        card.innerHTML = `
+          <div class="shoe-image">
+            <a href="shoe-detail.html?shoe=${encodeURIComponent(s.name)}" target="_blank">
+              <img src="${s.image}" alt="${s.name}" onerror="this.src=''">
+            </a>
+          </div>
+          <div class="shoe-name">${s.name}</div>
+          <div class="shoe-price">$${s.price}</div>
+        `;
+        grid.appendChild(card);
+    });
 }
 </script>
 </body>
