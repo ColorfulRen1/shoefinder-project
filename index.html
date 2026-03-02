@@ -300,7 +300,7 @@ function displayShoes(){
             <a href="shoe-detail.html?shoe=${encodeURIComponent(s.name)}" target="_blank">
               <img src="${s.image}" alt="${s.name}" onerror="this.src=''">
             </a>
-            ${s.gender == 'men' ? `<div style="position:absolute;top:8px;right:8px;background:(59,130,246,0.85);color:white;font-size:12px;font-weight:600;padding:3px 8px;border-radius:20px;">♂ Men</div>` : `<div style="position:absolute;top:8px;right:8px;background:rgba(255,20,147,0.4);color:white;font-size:11px;font-weight:600;padding:3px 8px;border-radius:20px;">♀ Women</div>`}
+            ${s.gender == 'men' ? `<div style="position:absolute;top:8px;right:8px;background:rgba(59,130,246,0.85);color:white;font-size:12px;font-weight:600;padding:3px 8px;border-radius:20px;">♂ Men</div>` : `<div style="position:absolute;top:8px;right:8px;background:rgba(255,20,147,0.4);color:white;font-size:11px;font-weight:600;padding:3px 8px;border-radius:20px;">♀ Women</div>`}
           </div>
           <div class="shoe-name">${s.name}</div>
           <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;">
