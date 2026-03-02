@@ -3,30 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shoe Details</title>
+<title>Shoe Details</title> <!-- This doesn't matter because it will be changed -->
 <style>
+
 body {
   font-family: sans-serif;
-  padding: 20px;
   background: #FFFDF2;
+  margin: 0;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
 }
+
 .container {
-  max-width: 600px;
-  margin: 0 auto;
+  width: 80%;
+  max-width: 1000px;
   background: white;
-  padding: 25px;
+  padding: 60px 25px 25px 25px;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  position: relative;
 }
+
 img {
   width: 100%;
-  max-height: 200px;
+  max-height: 350px;
   object-fit: contain;
   border-radius: 12px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
+
 h1 { margin-bottom: 8px; }
 p { margin-bottom: 6px; }
+
 .btn {
   padding: 10px 18px;
   background: #667eea;
@@ -36,24 +45,29 @@ p { margin-bottom: 6px; }
   text-decoration: none;
   cursor: pointer;
 }
+
 .review-section {
   margin-top: 20px;
   border-top: 1px solid #ccc;
   padding-top: 15px;
 }
+
 .review-section h3 { margin-bottom: 10px; }
+
 .review-item {
   background: #f7f7f7;
   padding: 10px;
   border-radius: 8px;
   margin-bottom: 8px;
 }
+
 .star {
   font-size: 24px;
   cursor: pointer;
-  color: #ffbf00; /* gold for filled stars */
+  color: #ffbf00;
   margin-right: 5px;
 }
+
 textarea {
   width: 100%;
   border-radius: 8px;
@@ -62,11 +76,36 @@ textarea {
   resize: vertical;
   margin-bottom: 10px;
 }
+
+.logo-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-weight: bold;
+  font-size: 18px;
+  color: #667eea;
+  padding: 6px 12px;
+  border: 2px solid #667eea;
+  border-radius: 6px;
+  text-decoration: none;
+  background: white;
+  cursor: pointer;
+}
+
+.logo-btn:hover,
+.logo-btn:active,
+.logo-btn:focus {
+  background: white;
+  color: #667eea;
+  text-decoration: none;
+}
 </style>
 </head>
 <body>
 
 <div class="container">
+  <a href="index.html" class="logo-btn">SoulMate</a>
+
   <div id="shoeDetail"></div>
 
   <div class="review-section">
@@ -89,8 +128,8 @@ textarea {
 
 <script>
 let shoes = [];
-let reviews = {}; // { shoeName: [{rating, text}] }
-let selectedRating = 5; // default
+let reviews = {};
+let selectedRating = 5;
 
 // Load shoes
 async function loadShoes() {
@@ -108,12 +147,10 @@ function escapeHtml(text) {
              .replace(/'/g, "&#039;");
 }
 
-// Capitalize first letter of each word
 function capitalizeWords(str) {
   return str.replace(/\b\w/g, c => c.toUpperCase());
 }
 
-// Display shoe details
 function displayShoeDetail() {
   const params = new URLSearchParams(window.location.search);
   const shoeName = params.get('shoe');
@@ -123,6 +160,8 @@ function displayShoeDetail() {
     document.getElementById('shoeDetail').innerHTML = '<p>Shoe not found.</p>';
     return;
   }
+
+  document.title = shoe.name;
 
   document.getElementById('shoeDetail').innerHTML = `
     <h1>${escapeHtml(shoe.name)}</h1>
@@ -137,7 +176,6 @@ function displayShoeDetail() {
   displayReviews(shoe.name);
 }
 
-// Star rating system
 const stars = document.querySelectorAll('#starRating .star');
 
 function updateStars(rating) {
@@ -147,10 +185,8 @@ function updateStars(rating) {
   });
 }
 
-// Initialize stars
 updateStars(selectedRating);
 
-// Hover & click events
 stars.forEach(star => {
   star.addEventListener('mouseover', () => {
     updateStars(parseInt(star.dataset.value));
@@ -164,7 +200,6 @@ stars.forEach(star => {
   });
 });
 
-// Submit review
 function submitReview() {
   const params = new URLSearchParams(window.location.search);
   const shoeName = params.get('shoe');
@@ -181,7 +216,6 @@ function submitReview() {
   displayReviews(shoeName);
 }
 
-// Display reviews
 function displayReviews(shoeName) {
   const reviewContainer = document.getElementById('reviewsList');
   reviewContainer.innerHTML = "";
