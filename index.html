@@ -296,7 +296,7 @@ function displayShoes(){
         const card = document.createElement('div');
         card.className = 'shoe-card';
         card.innerHTML = `
-          <div class="shoe-image">
+          <div class="shoe-image" style="position:relative;">
             <a href="shoe-detail.html?shoe=${encodeURIComponent(s.name)}" target="_blank">
               <img src="${s.image}" alt="${s.name}" onerror="this.src=''">
             </a>
