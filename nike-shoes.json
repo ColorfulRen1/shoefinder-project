@@ -4,6 +4,7 @@
     "category": "casual",
     "width": "medium",
     "price": 115,
+    "gender": "men",
     "link": "https://www.nike.com/t/air-force-1-07-mens-shoes-jBrhbr/CW2288-111",
     "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/b7d9211c-26e7-431a-ac24-b0540fb3c00f/AIR+FORCE+1+%2707.png"
   },
@@ -12,6 +13,7 @@
     "category": "casual",
     "width": "medium",
     "price": 85,
+    "gender": "men",
     "link": "https://www.nike.com/t/court-vision-low-mens-shoes-FpEqIQ3A/HV2530-100",
     "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/30196c19-7f0f-4566-bb63-94e3a3051b61/NIKE+COURT+VISION+LO.png"
   },
@@ -20,6 +22,7 @@
     "category": "casual",
     "width": "narrow",
     "price": 100,
+    "gender": "men",
     "link": "https://www.nike.com/t/killshot-2-leather-mens-shoes-72M7D1/IQ9402-133",
     "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/7a7d9dd5-851e-4401-a924-a287be7c6ab9/KILLSHOT+2+LEATHER.png"
   },
@@ -28,6 +31,7 @@
     "category": "casual",
     "width": "medium",
     "price": 135,
+    "gender": "men",
     "link": "https://www.nike.com/t/air-max-90-mens-shoes-bAZ6AeHT/DM0029-600",
     "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/0cb8b8c5-aa97-4d3e-accc-82cbe810ec10/AIR+MAX+90.png"
   },
@@ -36,6 +40,7 @@
     "category": "casual",
     "width": "medium",
     "price": 75,
+    "gender": "men",
     "link": "https://www.nike.com/t/revolution-8-mens-road-running-shoes-U0b8oy8S/HJ9198-006",
     "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/11a579e0-aec8-4398-88b0-a85808bd221d/NIKE+REVOLUTION+8.png"
   },
@@ -44,6 +49,7 @@
     "category": "running",
     "width": "medium",
     "price": 117,
+    "gender": "men",
     "link": "https://www.nike.com/t/pegasus-41-mens-road-running-shoes-LMhfRGdO/IM6674-101",
     "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/b26e2224-80ee-4cf1-a9d5-85e18af58e2c/AIR+ZOOM+PEGASUS+41.png"
   },
@@ -52,6 +58,7 @@
     "category": "running",
     "width": "narrow",
     "price": 165,
+    "gender": "men",
     "link": "https://www.nike.com/t/vomero-18-mens-realtree-road-running-shoes-NzWnvcC8/IF4456-001",
     "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/0bfaf4c8-a1a8-481d-bb08-bacd2290be64/NIKE+VOMERO+18+CM.png"
   },
@@ -60,6 +67,7 @@
     "category": "running",
     "width": "narrow",
     "price": 145,
+    "gender": "men",
     "link": "https://www.nike.com/t/structure-26-mens-road-running-shoes-M4sx9fru/HJ1102-102",
     "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/cb81dc56-fc1e-4e3a-83ac-c4476dace3b8/NIKE+STRUCTURE+26.png"
   },
@@ -68,6 +76,7 @@
     "category": "running",
     "width": "narrow",
     "price": 95,
+    "gender": "men",
     "link": "https://www.nike.com/t/journey-run-mens-road-running-shoes-Qg3sJk/FN0228-302",
     "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/7baa1200-f1d2-4b74-8ac6-0df00e565c89/NIKE+JOURNEY+RUN.png"
   },
@@ -76,87 +85,8 @@
     "category": "running",
     "width": "narrow",
     "price": 78,
+    "gender": "men",
     "link": "https://www.nike.com/t/wio-11-womens-road-running-shoes-slS3PS/FJ9510-001",
     "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/e34ff366-8339-4efa-a30e-f590467ed6b0/WMNS+NIKE+AIR+WINFLO+11.png"
-  },
-  {
-    "name": "Nike Wildhorse 10",
-    "category": "hiking",
-    "width": "narrow",
-    "price": 165,
-    "link": "https://www.nike.com/t/wildhorse-10-mens-trail-running-shoes-juOQGIPO/FV2338-009",
-    "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/d74a514b-224b-466b-a2b6-3c93aea86998/NIKE+REACTX+WILDHORSE+10.png"
-  },
-  {
-    "name": "Nike Pegasus Trail 5",
-    "category": "hiking",
-    "width": "medium",
-    "price": 155,
-    "link": "https://www.nike.com/t/pegasus-trail-5-mens-trail-running-shoes-0ZrZ4D/DV3864-403",
-    "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/8ca933c9-a29a-4a52-bc06-b2ae4ce66e71/NIKE+REACTX+PEGASUS+TRAIL+5.png"
-  },
-  {
-    "name": "Nike ACG Ultrafly Trail",
-    "category": "hiking",
-    "width": "medium",
-    "price": 260,
-    "link": "https://www.nike.com/t/acg-ultrafly-trail-trail-racing-shoes-uNHxL3GA/HF5668-801",
-    "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/d7402d3a-aabc-4d02-a4d8-8bdba0ba60a0/NIKE+ACG+ULTRAFLY+TRAIL.png"
-  }, 
-  {
-    "name": "Nike Pegasus Trail 5 GORE-TEX",
-    "category": "hiking",
-    "width": "medium",
-    "price": 180,
-    "link": "https://www.nike.com/t/pegasus-trail-5-gore-tex-mens-waterproof-trail-running-shoes-Tqyf11TS/FQ0908-001",
-    "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/daf0e3a9-bfaf-41c7-acd0-d28bbaf7316f/NIKE+PEGASUS+TRAIL+5+GTX.png"
-  }, 
-  {
-    "name": "Nike Zegama 2",
-    "category": "hiking",
-    "width": "narrow",
-    "price": 153,
-    "link": "https://www.nike.com/t/zegama-2-mens-trail-running-shoes-xeTRbJ5L/FD5190-001",
-    "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/189db369-1294-4c35-bd60-7d663a74b1cc/NIKE+ZOOMX+ZEGAMA+TRAIL+2.png"
-  },
-  {
-    "name": "Nike Mercurial Vapor 16 Elite",
-    "category": "sports",
-    "width": "medium",
-    "price": 270,
-    "link": "https://www.nike.com/t/mercurial-vapor-16-elite-firm-ground-low-top-soccer-cleats-aF5hbEJb/FQ1457-001",
-    "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/4360ee05-0d4d-4cc7-acf3-9194c9745773/ZM+VAPOR+16+ELITE+FG.png"
-  },
-  {
-    "name": "Nike Phantom 6 Low Elite 'Erling Haaland'",
-    "category": "sports",
-    "width": "wide",
-    "price": 190,
-    "link": "https://www.nike.com/t/phantom-6-low-elite-erling-haaland-firm-ground-soccer-cleats-XmHqLlVc/HQ2332-800",
-    "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/0079ed1c-a095-4aff-92ba-9f1bd557ce3e/PHANTOM+6+LOW+ELITE+FG+EH.png"
-  },
-  {
-    "name": "Nike Alpha Huarache Elite 4 Mid",
-    "category": "sports",
-    "width": "medium",
-    "price": 90,
-    "link": "https://www.nike.com/t/alpha-huarache-elite-4-mid-mens-baseball-cleats-JDPv50/FD2744-106",
-    "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto/e8ecc5c3-ea1c-4501-9671-efef0c929061/ALPHA+HUARACHE+ELITE+4+MID.png"
-  },
-  {
-    "name": "Nike Vapor Edge 360 'Untouchable'",
-    "category": "sports",
-    "width": "medium",
-    "price": 190,
-    "link": "https://www.nike.com/t/vapor-edge-360-untouchable-mens-football-cleats-kIP8magY/FQ0235-102",
-    "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/69663b43-0df1-4443-a39d-be7de42a2663/NIKE+VAPOR+EDGE+360+UT.png"
-  },
-  {
-    "name": "Nike Diamond Turf 2",
-    "category": "sports",
-    "width": "medium",
-    "price": 210,
-    "link": "https://www.nike.com/t/diamond-turf-2-football-cleats-HJIyz7lk/IF4807-001",
-    "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/fd94150e-8fca-4afe-a011-f6b66585cfaa/DIAMOND+TURF+II+TD.png"
   }
 ]
