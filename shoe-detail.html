@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shoe Details</title>
+<style>
+body {
+  font-family: sans-serif;
+  padding: 20px;
+  background: #FFFDF2;
+}
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+h1 { margin-bottom: 8px; }
+p { margin-bottom: 6px; }
+.btn {
+  padding: 10px 18px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.review-section {
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 15px;
+}
+.review-section h3 { margin-bottom: 10px; }
+.review-item {
+  background: #f7f7f7;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+.star {
+  font-size: 24px;
+  cursor: pointer;
+  color: #ffbf00; /* gold for filled stars */
+  margin-right: 5px;
+}
+textarea {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 8px;
+  resize: vertical;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div id="shoeDetail"></div>
+
+  <div class="review-section">
+    <h3>Leave a Review</h3>
+    <label>Rating:</label><br>
+    <div id="starRating">
+      <span class="star" data-value="1">☆</span>
+      <span class="star" data-value="2">☆</span>
+      <span class="star" data-value="3">☆</span>
+      <span class="star" data-value="4">☆</span>
+      <span class="star" data-value="5">☆</span>
+    </div>
+    <br>
+    <label>Comment:</label><br>
+    <textarea id="reviewText" rows="3" placeholder="Write your review..."></textarea>
+    <button class="btn" onclick="submitReview()">Submit Review</button>
+    <div id="reviewsList" style="margin-top:15px;"></div>
+  </div>
+</div>
+
+<script>
+let shoes = [];
+let reviews = {}; // { shoeName: [{rating, text}] }
+let selectedRating = 5; // default
+
+// Load shoes
+async function loadShoes() {
+  const res = await fetch('nike-shoes.json');
+  shoes = await res.json();
+  displayShoeDetail();
+}
+
+// Sanitize input
+function escapeHtml(text) {
+  return text.replace(/&/g, "&amp;")
+             .replace(/</g, "&lt;")
+             .replace(/>/g, "&gt;")
+             .replace(/"/g, "&quot;")
+             .replace(/'/g, "&#039;");
+}
+
+// Capitalize first letter of each word
+function capitalizeWords(str) {
+  return str.replace(/\b\w/g, c => c.toUpperCase());
+}
+
+// Display shoe details
+function displayShoeDetail() {
+  const params = new URLSearchParams(window.location.search);
+  const shoeName = params.get('shoe');
+
+  const shoe = shoes.find(s => s.name === shoeName);
+  if(!shoe){
+    document.getElementById('shoeDetail').innerHTML = '<p>Shoe not found.</p>';
+    return;
+  }
+
+  document.getElementById('shoeDetail').innerHTML = `
+    <h1>${escapeHtml(shoe.name)}</h1>
+    <img src="${escapeHtml(shoe.image)}" alt="${escapeHtml(shoe.name)}">
+    <p><strong>Category:</strong> ${capitalizeWords(escapeHtml(shoe.category))}</p>
+    <p><strong>Width:</strong> ${capitalizeWords(escapeHtml(shoe.width))}</p>
+    <p><strong>Gender:</strong> ${capitalizeWords(escapeHtml(shoe.gender))}</p>
+    <p><strong>Price:</strong> $${escapeHtml(shoe.price.toString())}</p>
+    <p><a href="${escapeHtml(shoe.link)}" target="_blank" class="btn">Buy Now</a></p>
+  `;
+
+  displayReviews(shoe.name);
+}
+
+// Star rating system
+const stars = document.querySelectorAll('#starRating .star');
+
+function updateStars(rating) {
+  stars.forEach(star => {
+    const val = parseInt(star.dataset.value);
+    star.textContent = val <= rating ? '★' : '☆';
+  });
+}
+
+// Initialize stars
+updateStars(selectedRating);
+
+// Hover & click events
+stars.forEach(star => {
+  star.addEventListener('mouseover', () => {
+    updateStars(parseInt(star.dataset.value));
+  });
+  star.addEventListener('mouseout', () => {
+    updateStars(selectedRating);
+  });
+  star.addEventListener('click', () => {
+    selectedRating = parseInt(star.dataset.value);
+    updateStars(selectedRating);
+  });
+});
+
+// Submit review
+function submitReview() {
+  const params = new URLSearchParams(window.location.search);
+  const shoeName = params.get('shoe');
+  const text = document.getElementById('reviewText').value.trim();
+
+  if(text === "") return alert("Please enter a comment.");
+
+  if(!reviews[shoeName]) reviews[shoeName] = [];
+  reviews[shoeName].push({ rating: selectedRating, text: escapeHtml(text) });
+
+  document.getElementById('reviewText').value = "";
+  selectedRating = 5;
+  updateStars(selectedRating);
+  displayReviews(shoeName);
+}
+
+// Display reviews
+function displayReviews(shoeName) {
+  const reviewContainer = document.getElementById('reviewsList');
+  reviewContainer.innerHTML = "";
+
+  if(!reviews[shoeName] || reviews[shoeName].length === 0) {
+    reviewContainer.innerHTML = "<p>No reviews yet.</p>";
+    return;
+  }
+
+  reviews[shoeName].forEach(r => {
+    const div = document.createElement('div');
+    div.className = 'review-item';
+    div.innerHTML = `<strong>Anonymous</strong> - ${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}<br>${r.text}`;
+    reviewContainer.appendChild(div);
+  });
+}
+
+loadShoes();
+</script>
+
+</body>
+</html>
